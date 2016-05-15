@@ -8,8 +8,8 @@ ifeq ($(OS),Windows_NT)
 else
     OS:=$(shell uname -s)
     ifeq ($(OS),Linux)
-        JAVAC_PATH=$(readlink -f /usr/bin/javac)
-        JAVA_HOME=$(dirname $(dirname $(JAVAC_PATH)))
+        JAVAC_PATH=$(shell readlink -f /usr/bin/javac)
+        JAVA_HOME=$(shell dirname -- $(shell dirname $(JAVAC_PATH)))
         JNI_MD_FOLDER=linux
         LIB_TYPE=-shared
         LIB_EXT=so
